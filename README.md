@@ -11,7 +11,8 @@ I am going to be implementing this componenet for our Comp150 game.
 The component I want to include into this game would be to use weather databases to affect the weather and colour hue of the game. If the area is cloudy then the colours look grey, if there is rain then rain particles appear on the screen, etc.
 
 ##Language
-For this I'll be using C++ for the colour and weather change and JSON / XML API as this is required to use the API.
+For this I'll be using C++ for the colour and weather change and JSON / XML API as this is required to use the API. To use this API with C++, I'll be using C++ REST SDK (casablanca) to allow for the information to be taken from the http request and JSON.
+https://github.com/Microsoft/cpprestsdk
 
 ##API
 The API I'll be using is Open Weather Map which provides free weather data and forecast API suitable for any cartographic services like web and smartphones applications.
