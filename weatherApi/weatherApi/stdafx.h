@@ -23,3 +23,5 @@
 #include <cpprest/filestream.h>
 #include <cpprest/http_listener.h>
 #include <cpprest/json.h>
+#include <istream>
+#include <string>
