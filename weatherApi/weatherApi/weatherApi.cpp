@@ -28,15 +28,46 @@ pplx::task<void> requestTask = fstream::open_ostream(U("results.html")).then([=]
 {
 	*fileStream = outFile;
 
-	const string clientSite = "http://api.openweathermap.org/data/2.5/forecast/city?id=";
-	const string locationID = "524901";
-	const string appID = "&APPID=82e200ef6d4a970a6d799061a11ed93c";
+	//List of string addresses
+	const string clientSite = U("http://api.openweathermap.org/data/2.5/forecast/city?id=");
+	const string locationID = U("524901");
+	const string appID = U("&APPID=82e200ef6d4a970a6d799061a11ed93c");
 
-	web::http::client::http_client client(U(clientSite));
+	//The base client website
+	web::http::client::http_client client(clientSite);
 
-	web::uri_builder builder(U(locationID));
-	builder.append_query(U(locationID), U(appID));
+	//Build the fully address
+	web::uri_builder builder(locationID);
+	builder.append_query((locationID), (appID));
 	return client.request(methods.GET, builder.to_string());
 	
-	http_response::extract_json()
+	//http_response::extract_json()
 })
+
+    // Handle response headers arriving.
+    .then([=](http_response response)
+    {
+        printf("Received response status code:%u\n", response.status_code());
+
+        // Write response body into the file.
+        return response.body().read_to_end(fileStream->streambuf());
+    })
+
+    // Close the file stream.
+    .then([=](size_t)
+    {
+        return fileStream->close();
+    });
+
+    // Wait for all the outstanding I/O to complete and handle any exceptions
+    try
+    {
+        requestTask.wait();
+    }
+    catch (const std::exception &e)
+    {
+        printf("Error exception:%s\n", e.what());
+    }
+
+    return 0;
+}
