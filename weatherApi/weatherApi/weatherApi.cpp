@@ -12,11 +12,11 @@
 http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=82e200ef6d4a970a6d799061a11ed93c 
 API key = 82e200ef6d4a970a6d799061a11ed93c
 
-using namespace utility;
-using namespace web;
-using namespace web::http;
-using namespace web::http::client;
-using namespace concurrency::streams;
+using namespace utility;			// Common utilities like string conversions
+using namespace web;				// Common features like URIs
+using namespace web::http;			// Common HTTP functionality
+using namespace web::http::client;		// HTTP client features
+using namespace concurrency::streams;		// Asynchronous streams
 
 using namespace web::json;
 
