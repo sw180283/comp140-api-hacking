@@ -20,8 +20,9 @@
 
 // TODO: reference additional headers your program requires here
 #include <cpprest/http_client.h>
-#include <cpprest/filestream.h>
-#include <cpprest/http_listener.h>
+//#include <cpprest/filestream.h>
+//#include <cpprest/http_listener.h>
 #include <cpprest/json.h>
 #include <istream>
+#include <iostream>
 #include <string>

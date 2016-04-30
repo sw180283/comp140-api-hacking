@@ -1,11 +1,7 @@
 // weatherApi.cpp : Defines the entry point for the application.
 //
-
 #include "stdafx.h"
 #include "weatherApi.h"
-
-#include <cpprest/http_client.h>
-#include <cpprest/filestream.h>
 
 //TO DO
 // Get information from OpenWeather JSON
@@ -17,6 +13,48 @@ using namespace web;				// Common features like URIs
 using namespace web::http;			// Common HTTP functionality
 using namespace web::http::client;		// HTTP client features
 using namespace concurrency::streams;		// Asynchronous streams
+
+/*
+//https://msdn.microsoft.com/en-us/library/jj950082.aspx
+
+using namespace web;
+using namespace web::http;
+using namespace web::http::client;
+
+//Retrives a JSON value from an HTTP request
+pplx::task<void> RequestJSONValueAsync()
+{
+	http_client client(L"http://api.openweathermap.org/data/2.5/forecast?q=London,UK&APPID=82e200ef6d4a970a6d799061a11ed93c");
+	//Build request start URI
+	//uri_builder builder(L"/data/2.5/forecast");
+	//builder.append_query(L"q", L"London,UK");
+	//builder.append_query(L"appid", L"82e200ef6d4a970a6d799061a11ed93c");
+	return client.request(methods::GET).then([](http_response response) -> pplx::task<json::value>
+	{
+		if (response.status_code() == status_codes::OK)
+		{
+			return response.extract_json();
+		}
+		return pplx::task_from_result(json::value());
+	})
+		.then([](pplx::task<json::value> previousTask)
+	{	
+		try
+		{
+			const json::value& v = previousTask.get();
+		}
+		catch (const http_exception& e)
+		{
+			std::wostringstream ss;
+			ss << e.what() << std::endl;
+			std::wcout << ss.str();
+		}
+	});
+}*/
+
+/*
+#include <cpprest/http_client.h>
+#include <cpprest/filestream.h>
 
 using namespace web::json;
 /*
@@ -91,7 +129,10 @@ pplx::task<void> requestTask = fstream::open_ostream(U("results.html")).then([=]
     return 0;
 }*/
 
-/*
+
+
+//http://stackoverflow.com/questions/34960421/looping-through-a-list-of-objects
+
 void findWeather()
 {
 	web::http::client::http_client client(U("http://api.openweathermap.org"));
@@ -115,4 +156,4 @@ void findWeather()
 		std::cout << "Weather is " << conversion::to_utf8strin(weatherDescription) << std::endl;
 
 		web::json::value MainJson = forecastDayJson.at(U("main"));
-	}/*
+	}
