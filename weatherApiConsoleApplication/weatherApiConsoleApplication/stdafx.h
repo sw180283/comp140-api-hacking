@@ -7,22 +7,19 @@
 
 #include "targetver.h"
 
-#define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
-// Windows Header Files:
-#include <windows.h>
-
-// C RunTime Header Files
-#include <stdlib.h>
-#include <malloc.h>
-#include <memory.h>
+#include <stdio.h>
 #include <tchar.h>
+
 
 
 // TODO: reference additional headers your program requires here
 #include <cpprest/http_client.h>
-//#include <cpprest/filestream.h>
-//#include <cpprest/http_listener.h>
+#include <cpprest/filestream.h>
+#include <cpprest/http_listener.h>
 #include <cpprest/json.h>
 #include <istream>
 #include <iostream>
 #include <string>
+#include <list>
+#include <stdlib.h>
+#include <stdio.h>
