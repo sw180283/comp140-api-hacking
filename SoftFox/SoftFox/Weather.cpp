@@ -15,7 +15,10 @@ https://github.com/Microsoft/cpprestsdk
 http://stackoverflow.com/questions/34960421/looping-through-a-list-of-objects
 */
 
-Weather::Weather() {}
+Weather::Weather()
+{
+	weatherDescription = "";
+}
 Weather::~Weather() {}
 
 void Weather::findWeather()
@@ -69,7 +72,7 @@ void Weather::findWeather()
 			// Display the location weather 
 			std::cout << "Weather is " << conversions::to_utf8string(weatherDescription) << std::endl;
 
-			//web::json::value MainJson = forecastDayJSON.at(U("main"));
+			weatherList = weatherDescription;
 		}
 	}
 }

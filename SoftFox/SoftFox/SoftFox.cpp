@@ -48,9 +48,12 @@ SoftFox::SoftFox()
 	rain = new Texture("..\\Icons\\rain.png");
 	sunny = new Texture("..\\Icons\\sunny.png");
 	cloudy = new Texture("..\\Icons\\scattered_clouds.png");
+	thunderstorm = new Texture("..\\Icons\\thunderstorm.png");
 
 	//Hunter (Thomas)
 	hunterSprite = new Texture("..\\Sprites\\elmer.jpg");
+
+	weather->findWeather();
 }
 
 SoftFox::~SoftFox()
@@ -79,7 +82,7 @@ SoftFox::~SoftFox()
 void SoftFox::run()
 {
 	//http://www.lazyfoo.net/tutorials/SDL/32_text_input_and_clipboard_handling/index.php
-	//weather->findWeather();
+
 	//Set a boolean to keep the window running until false
 	running = true;
 
@@ -180,8 +183,24 @@ void SoftFox::drawLevel()
 	}
 }
 
-void SoftFox::changeWeather(SDL_Renderer* renderer, const char* weatherDescription)
+void SoftFox::changeWeather(SDL_Renderer* renderer, std::string weatherDescription)
 {
-	rain->render(renderer, WINDOW_WIDTH-40, 40, SPRITE_SIZE, SPRITE_SIZE);
+	if (weatherDescription == "rain")
+	{
+		rain->render(renderer, WINDOW_WIDTH - 40, 40, SPRITE_SIZE, SPRITE_SIZE);
+	}
+	else if (weatherDescription == "sunny")
+	{
+		sunny->render(renderer, WINDOW_WIDTH - 40, 40, SPRITE_SIZE, SPRITE_SIZE);
+	}
+	else if (weatherDescription == "scattered_cloud" || weatherDescription == "few_clouds")
+	{
+		cloudy->render(renderer, WINDOW_WIDTH - 40, 40, SPRITE_SIZE, SPRITE_SIZE);
+	}
+	else
+	{
+		thunderstorm->render(renderer, WINDOW_WIDTH - 40, 40, SPRITE_SIZE, SPRITE_SIZE);;
+	}
+	
 	//SDL_RenderCopy(renderer, rain, nullptr, NULL);
 }
