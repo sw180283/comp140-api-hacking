@@ -14,7 +14,7 @@ public:
 	~SoftFox();
 
 	void run();
-	void displayDialog();
+	//void displayDialog();
 
 	//Hunter (Thomas)
 	int getHunterX() { return HunterX; }
@@ -31,6 +31,8 @@ public:
 	int getPlayerY() { return playerY; }
 	int tileSize;
 
+	void changeWeather(SDL_Renderer* renderer, const char* weatherDescription);
+
 private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
@@ -40,6 +42,11 @@ private:
 	SDL_Texture* platformSprite;
 	SDL_Texture* platformSprite_Dirt;
 	SDL_Texture* backgroundImage;
+
+	//Weather
+	Texture* rain;
+	Texture* sunny;
+	Texture* cloudy;
 
 	Level* level;
 	//individually draws tiles

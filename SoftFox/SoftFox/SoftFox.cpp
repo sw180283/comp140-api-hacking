@@ -43,6 +43,12 @@ SoftFox::SoftFox()
 	platformSprite_Dirt = IMG_LoadTexture(renderer, "..\\Sprites\\platform_sprite_dirt.png");
 	backgroundImage = IMG_LoadTexture(renderer, "..\\Sprites\\background_art.jpg");
 	playerSprite = new Texture("..\\Sprites\\red_fox_sprite_1.gif");
+
+	//Weather
+	rain = new Texture("..\\Icons\\rain.png");
+	sunny = new Texture("..\\Icons\\sunny.png");
+	cloudy = new Texture("..\\Icons\\scattered_clouds.png");
+
 	//Hunter (Thomas)
 	hunterSprite = new Texture("..\\Sprites\\elmer.jpg");
 }
@@ -73,7 +79,7 @@ SoftFox::~SoftFox()
 void SoftFox::run()
 {
 	//http://www.lazyfoo.net/tutorials/SDL/32_text_input_and_clipboard_handling/index.php
-	weather->findWeather();
+	//weather->findWeather();
 	//Set a boolean to keep the window running until false
 	running = true;
 
@@ -136,6 +142,8 @@ void SoftFox::run()
 
 		//Drawing hunter sprite (Thomas)
 		hunterSprite->render(renderer, HunterX, HunterY, SPRITE_SIZE, SPRITE_SIZE);
+
+		//changeWeather(renderer);
 					
 		SDL_RenderPresent(renderer);				
 	}
@@ -171,16 +179,9 @@ void SoftFox::drawLevel()
 		}
 	}
 }
-/*
-void displayDialog()
-{
-	// Create and display an instance of the dialog box
-	Systems.Windows.Forms Form^ dlg = gcnew Form();
 
-	// Show the dialog and determine the state of the 
-	// DialogResult property for the form.
-	if (dlg->ShowDialog() == DialogResult::OK)
-	{
-		// Do something here to handle data from dialog box.
-	}
-}*/
+void SoftFox::changeWeather(SDL_Renderer* renderer, const char* weatherDescription)
+{
+	rain->render(renderer, WINDOW_WIDTH-40, 40, SPRITE_SIZE, SPRITE_SIZE);
+	//SDL_RenderCopy(renderer, rain, nullptr, NULL);
+}
