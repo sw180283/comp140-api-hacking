@@ -40,7 +40,7 @@ void Weather::findWeather()
 	std::wcin >> location;
 
 	// Search query by location
-	builder.append_query(U("q"), location);
+	builder.append_query(U("q"), "Falmouth");
 
 	// App ID added here
 	builder.append_query(U("appid"), U("82e200ef6d4a970a6d799061a11ed93c"));
@@ -74,6 +74,7 @@ void Weather::findWeather()
 			std::cout << "Weather is " << conversions::to_utf8string(weatherDescription) << std::endl;
 
 			weatherList = weatherDescription.c_str();
+			//std::string weatherList = std::string conversions::to_utf8string(weatherDescription);
 		}
 	}
 }
