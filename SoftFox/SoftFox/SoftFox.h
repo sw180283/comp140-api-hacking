@@ -31,9 +31,9 @@ public:
 	int getPlayerY() { return playerY; }
 	int tileSize;
 
-	//const char* weatherDescription = weather->weatherList;
+	std::string weatherDescription = weather->weatherList;
 
-	void changeWeather(SDL_Renderer* renderer, const char* weatherDescription);
+	void changeWeather(SDL_Renderer* renderer, std::string* weatherDescription);
 
 private:
 	SDL_Window* window;

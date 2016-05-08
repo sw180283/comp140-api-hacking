@@ -43,6 +43,7 @@ SoftFox::SoftFox()
 	{
 		weather->findWeather();
 	}
+	//weatherDescription = weather->weatherList;
 
 	//Load sprites locations in
 	platformSprite = IMG_LoadTexture(renderer, "..\\Sprites\\platform_sprite.png");
@@ -143,7 +144,7 @@ void SoftFox::run()
 		//Drawing hunter sprite (Thomas)
 		hunterSprite->render(renderer, HunterX, HunterY, SPRITE_SIZE, SPRITE_SIZE);
 
-		changeWeather(renderer, weather->weatherList);
+		changeWeather(renderer, weatherDescription);
 					
 		SDL_RenderPresent(renderer);	
 	}
@@ -180,7 +181,7 @@ void SoftFox::drawLevel()
 	}
 }
 
-void SoftFox::changeWeather(SDL_Renderer* renderer, const char* weatherDescription)
+void SoftFox::changeWeather(SDL_Renderer* renderer, std::string* weatherDescription)
 {
 	if (weatherDescription == "rain")
 	{

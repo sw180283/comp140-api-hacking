@@ -8,10 +8,10 @@ public:
 	Weather();
 	~Weather();
 
-	const char* weatherList;
+	std::string weatherList;
+	std::string weatherDescription;
 
 	void findWeather();
 
 private:
-	std::string weatherDescription;
 };
