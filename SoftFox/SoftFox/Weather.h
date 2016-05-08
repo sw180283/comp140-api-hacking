@@ -8,7 +8,7 @@ public:
 	Weather();
 	~Weather();
 
-	std::string weatherList;
+	const char& weatherList;
 
 	void findWeather();
 

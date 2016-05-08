@@ -183,7 +183,7 @@ void SoftFox::drawLevel()
 	}
 }
 
-void SoftFox::changeWeather(SDL_Renderer* renderer, std::string weatherDescription)
+void SoftFox::changeWeather(SDL_Renderer* renderer, const char& weatherDescription)
 {
 	if (weatherDescription == "rain")
 	{
