@@ -8,7 +8,7 @@ public:
 	Weather();
 	~Weather();
 
-	const char& weatherList;
+	const char* weatherList;
 
 	void findWeather();
 

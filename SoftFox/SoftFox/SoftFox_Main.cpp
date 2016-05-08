@@ -2,6 +2,7 @@
 #include "SoftFox_Main.h"
 #include "SoftFox.h"
 #include "InitialisationError.h"
+#include "Weather.h"
 
 
 int main(int argc, char* args[])

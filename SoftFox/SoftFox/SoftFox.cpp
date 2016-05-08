@@ -52,8 +52,6 @@ SoftFox::SoftFox()
 
 	//Hunter (Thomas)
 	hunterSprite = new Texture("..\\Sprites\\elmer.jpg");
-
-	weather->findWeather();
 }
 
 SoftFox::~SoftFox()
@@ -82,7 +80,7 @@ SoftFox::~SoftFox()
 void SoftFox::run()
 {
 	//http://www.lazyfoo.net/tutorials/SDL/32_text_input_and_clipboard_handling/index.php
-
+	weather->findWeather();
 	//Set a boolean to keep the window running until false
 	running = true;
 
@@ -123,12 +121,6 @@ void SoftFox::run()
 			playerX -= PLAYER_MOVEMENT_SPEED;
 		if (keyboardState[SDL_SCANCODE_RIGHT])
 			playerX += PLAYER_MOVEMENT_SPEED;
-		/*
-		if (physics->isCollision(playerSprite, platformSprite))
-		{
-			PLAYER_MOVEMENT_SPEED = 0;
-		}
-		*/
 
 		//Change the colour of the background renderer and then clear the colour
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -146,7 +138,7 @@ void SoftFox::run()
 		//Drawing hunter sprite (Thomas)
 		hunterSprite->render(renderer, HunterX, HunterY, SPRITE_SIZE, SPRITE_SIZE);
 
-		//changeWeather(renderer);
+		changeWeather(renderer, weatherDescription);
 					
 		SDL_RenderPresent(renderer);				
 	}
@@ -183,7 +175,7 @@ void SoftFox::drawLevel()
 	}
 }
 
-void SoftFox::changeWeather(SDL_Renderer* renderer, const char& weatherDescription)
+void SoftFox::changeWeather(SDL_Renderer* renderer, const char* weatherDescription)
 {
 	if (weatherDescription == "rain")
 	{

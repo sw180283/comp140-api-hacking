@@ -19,6 +19,7 @@ Weather::Weather()
 {
 	weatherDescription = "";
 }
+
 Weather::~Weather() {}
 
 void Weather::findWeather()
@@ -72,7 +73,7 @@ void Weather::findWeather()
 			// Display the location weather 
 			std::cout << "Weather is " << conversions::to_utf8string(weatherDescription) << std::endl;
 
-			weatherList = weatherDescription.c_str;
+			weatherList = weatherDescription.c_str();
 		}
 	}
 }
