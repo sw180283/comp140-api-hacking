@@ -80,6 +80,15 @@ void Weather::findWeather()
 			std::cout << "Weather is " << conversions::to_utf8string(weatherDescription) << std::endl;
 
 			std::string weatherList = weatherDescription;
+
+			//Tutorial: http://www.cplusplus.com/doc/tutorial/files/
+			// Open a text document to record the current weather 
+			std::ofstream weatherFile;
+			weatherFile.open("weather.txt");
+
+			// Write the weatherDescription from the get request to the text file and close file
+			weatherFile << conversions::to_utf8string(weatherDescription);
+			weatherFile.close();
 		}
 	}
 }

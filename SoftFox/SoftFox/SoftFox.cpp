@@ -178,9 +178,26 @@ void SoftFox::drawLevel()
 	}
 }
 
+// Get the weather from the text document and set the string to weatherText
+void SoftFox::getWeather()
+{
+	std::ifstream weather("weather.txt");
+	if (weather.is_open())
+	{
+		getline(weather, weatherText);
+	}
+	weather.close();
+}
+
 // Get current weather from Falmouth location
 void SoftFox::changeWeather(SDL_Renderer* renderer, std::string weatherDescription)
 {
+	// If there is no weatherDescription get weather from weather.txt
+	if (weatherDescription == "")
+	{
+		getWeather();
+		weatherDescription = weatherText;
+	}
 	// If description matches const char* get weather icon for each different type of weather
 	if (weatherDescription == "Rain")
 	{
