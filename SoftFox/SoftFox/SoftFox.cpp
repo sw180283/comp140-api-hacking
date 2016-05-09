@@ -53,7 +53,7 @@ SoftFox::SoftFox()
 	clear = new Texture("..\\Icons\\clear_sky.png");
 
 	//Hunter (Thomas)
-	hunterSprite = new Texture("..\\Sprites\\elmer.jpg");
+	//hunterSprite = new Texture("..\\Sprites\\elmer.jpg");
 }
 
 SoftFox::~SoftFox()
@@ -137,7 +137,7 @@ void SoftFox::run()
 		playerSprite->render(renderer, playerX, playerY, SPRITE_SIZE, SPRITE_SIZE);
 
 		//Drawing hunter sprite (Thomas)
-		hunterSprite->render(renderer, HunterX, HunterY, SPRITE_SIZE, SPRITE_SIZE);
+		//hunterSprite->render(renderer, HunterX, HunterY, SPRITE_SIZE, SPRITE_SIZE);
 
 		weather->findWeather();
 		std::string weatherDescription = weather->weatherList;
