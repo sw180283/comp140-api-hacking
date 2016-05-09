@@ -41,8 +41,8 @@ SoftFox::SoftFox()
 	//Load sprites locations in
 	platformSprite = IMG_LoadTexture(renderer, "..\\Sprites\\platform_sprite.png");
 	platformSprite_Dirt = IMG_LoadTexture(renderer, "..\\Sprites\\platform_sprite_dirt.png");
-	backgroundImage = IMG_LoadTexture(renderer, "..\\Sprites\\background_art.jpg");
-	playerSprite = new Texture("..\\Sprites\\red_fox_sprite_1.gif");
+	//backgroundImage = IMG_LoadTexture(renderer, "..\\Sprites\\background_art.jpg");
+	//playerSprite = new Texture("..\\Sprites\\red_fox_sprite_1.gif");
 
 	//Weather
 	weather = new Weather;
@@ -128,13 +128,13 @@ void SoftFox::run()
 		SDL_RenderClear(renderer);
 
 		//Render the background first
-		SDL_RenderCopy(renderer, backgroundImage, nullptr, NULL);
+		//SDL_RenderCopy(renderer, backgroundImage, nullptr, NULL);
 
 		//Draw the level using the method drawTile shown below
 		drawLevel();
 					
 		//Drawing player sprite (texture class)
-		playerSprite->render(renderer, playerX, playerY, SPRITE_SIZE, SPRITE_SIZE);
+		//playerSprite->render(renderer, playerX, playerY, SPRITE_SIZE, SPRITE_SIZE);
 
 		//Drawing hunter sprite (Thomas)
 		//hunterSprite->render(renderer, HunterX, HunterY, SPRITE_SIZE, SPRITE_SIZE);
