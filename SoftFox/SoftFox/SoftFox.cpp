@@ -38,13 +38,6 @@ SoftFox::SoftFox()
 		throw InitialisationError("SDL_CreateRenderer failed");
 	}
 
-	weather = new Weather;
-	if (weather == nullptr)
-	{
-		weather->findWeather();
-	}
-	//weatherDescription = weather->weatherList;
-
 	//Load sprites locations in
 	platformSprite = IMG_LoadTexture(renderer, "..\\Sprites\\platform_sprite.png");
 	platformSprite_Dirt = IMG_LoadTexture(renderer, "..\\Sprites\\platform_sprite_dirt.png");
@@ -52,10 +45,12 @@ SoftFox::SoftFox()
 	playerSprite = new Texture("..\\Sprites\\red_fox_sprite_1.gif");
 
 	//Weather
+	weather = new Weather;
 	rain = new Texture("..\\Icons\\rain.png");
 	sunny = new Texture("..\\Icons\\sunny.png");
 	cloudy = new Texture("..\\Icons\\scattered_clouds.png");
 	thunderstorm = new Texture("..\\Icons\\thunderstorm.png");
+	clear = new Texture("..\\Icons\\clear_sky.png");
 
 	//Hunter (Thomas)
 	hunterSprite = new Texture("..\\Sprites\\elmer.jpg");
@@ -144,6 +139,8 @@ void SoftFox::run()
 		//Drawing hunter sprite (Thomas)
 		hunterSprite->render(renderer, HunterX, HunterY, SPRITE_SIZE, SPRITE_SIZE);
 
+		weather->findWeather();
+		std::string weatherDescription = weather->weatherList;
 		changeWeather(renderer, weatherDescription);
 					
 		SDL_RenderPresent(renderer);	
@@ -181,27 +178,28 @@ void SoftFox::drawLevel()
 	}
 }
 
-void SoftFox::changeWeather(SDL_Renderer* renderer, std::string* weatherDescription)
+// Get current weather from Falmouth location
+void SoftFox::changeWeather(SDL_Renderer* renderer, std::string weatherDescription)
 {
-	if (weatherDescription == "rain")
+	// If description matches const char* get weather icon for each different type of weather
+	if (weatherDescription == "Rain")
 	{
 		rain->render(renderer, WINDOW_WIDTH - 40, 40, SPRITE_SIZE, SPRITE_SIZE);
 	}
-	else if (weatherDescription == "sunny")
+	else if (weatherDescription == "Sunny")
 	{
 		sunny->render(renderer, WINDOW_WIDTH - 40, 40, SPRITE_SIZE, SPRITE_SIZE);
 	}
-	else if (weatherDescription == "scattered_cloud" || weatherDescription == "few_clouds")
+	else if (weatherDescription == "Scattered_cloud" || weatherDescription == "Few_clouds" || weatherDescription == "Clouds")
 	{
 		cloudy->render(renderer, WINDOW_WIDTH - 40, 40, SPRITE_SIZE, SPRITE_SIZE);
 	}
-	else if (weatherDescription == "thunderstorm")
+	else if (weatherDescription == "Thunderstorm")
 	{
 		thunderstorm->render(renderer, WINDOW_WIDTH - 40, 40, SPRITE_SIZE, SPRITE_SIZE);
 	}
-	
 	else
 	{
+		clear->render(renderer, WINDOW_WIDTH - 40, 40, SPRITE_SIZE, SPRITE_SIZE);
 	}
-	//SDL_RenderCopy(renderer, rain, nullptr, NULL);
 }

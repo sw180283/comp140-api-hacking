@@ -12,6 +12,8 @@ public:
 	std::string weatherDescription;
 
 	void findWeather();
+	void displayWeather();
 
 private:
+
 };

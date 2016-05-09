@@ -31,9 +31,7 @@ public:
 	int getPlayerY() { return playerY; }
 	int tileSize;
 
-	std::string weatherDescription = weather->weatherList;
-
-	void changeWeather(SDL_Renderer* renderer, std::string* weatherDescription);
+	void changeWeather(SDL_Renderer* renderer, std::string weatherDescription);
 
 private:
 	SDL_Window* window;
@@ -50,6 +48,7 @@ private:
 	Texture* sunny;
 	Texture* cloudy;
 	Texture* thunderstorm;
+	Texture* clear;
 
 	Level* level;
 	//individually draws tiles
